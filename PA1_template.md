@@ -126,8 +126,8 @@ NArep$steps.x[is.na(NArep$steps.x)]=NArep$steps.y[is.na(NArep$steps.x)]
 
 
 ```r
-p2<-aggregate(steps~date,data=df,sum)
-P2<-ggplot(p2,aes(x=date,y=steps))+
+p2<-aggregate(steps.x~date,data=NArep,sum)
+P2<-ggplot(p2,aes(x=date,y=steps.x))+
     geom_bar(stat="identity")+xlab("Date")+ylab("Total Steps")+
     theme_bw()+
     theme(panel.grid.major=element_blank(),panel.grid.minor=element_blank(),axis.text.x  = element_text(angle=90, size=8))
@@ -150,8 +150,8 @@ dev.off()
 
 
 ```r
-MeanStepsNA<-mean(p2$steps)
-MedianStepsNA<-median(p2$steps)
+MeanStepsNA<-mean(p2$steps.x)
+MedianStepsNA<-median(p2$steps.x)
 MeanStepsNA
 ```
 
@@ -164,7 +164,7 @@ MedianStepsNA
 ```
 
 ```
-## [1] 10765
+## [1] 10766.19
 ```
 The new mean (w/ NA filled) per day is the same as the old mean. The new median is greater than the old median.
 
